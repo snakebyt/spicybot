@@ -1,0 +1,26 @@
+{
+  "name": "spicybot",
+  "version": "0.0.1",
+  "description": "Basically replacing spicypixel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snakebyt/spicybot.git"
+  },
+  "keywords": [
+    "Bot",
+    "IRC",
+    "Replacement",
+    "Automation"
+  ],
+  "author": "Snakebyte",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/snakebyt/spicybot/issues"
+  },
+  "homepage": "https://github.com/snakebyt/spicybot#readme"
+}
