@@ -4,7 +4,7 @@ var irc = require('irc');
 const fs = require('fs');
 
 const config = {
-	channels: ['#leeistesting123'],
+	channels: ['#hwjunkies'],
 	server : 'irc.quakenet.org', 
 	botName : 'spicybot'
 };
