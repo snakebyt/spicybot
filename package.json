@@ -22,5 +22,9 @@
   "bugs": {
     "url": "https://github.com/snakebyt/spicybot/issues"
   },
-  "homepage": "https://github.com/snakebyt/spicybot#readme"
+  "homepage": "https://github.com/snakebyt/spicybot#readme",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "request": "^2.79.0"
+  }
 }
