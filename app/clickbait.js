@@ -32,5 +32,19 @@ britProb : function(callback){
 			calllback("Reddit is down :(");
 		}
 	});
+},
+amazon : function(callback){
+	var links = [];
+	request('https://www.amazon.co.uk/Best-Sellers-Electronics-Computer-Accessories-Peripherals/zgbs/electronics', function (error, response, body){
+		if(!error && response.statusCode === 200){
+			var $ = cheerio.load(body);
+			$('.a-section > .a-link-normal').each(function(){
+				links.push('https://www.amazon.co.uk' + $(this).attr('href'));
+			});
+			callback(links[Math.floor(Math.random()*20)]);
+		}else{
+			calllback("Amazon is down :(");
+		}
+	});
 }
 };

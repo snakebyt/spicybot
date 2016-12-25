@@ -34,14 +34,17 @@ spicybot.ifQuiet = function(initMsg){
 spicybot.snark = function(){
 
 	var shitpost;
-	var effort = Math.floor(Math.random()*(11));
+	var effort = Math.floor(Math.random()*(12));
 
-	if (effort < 8){
+	if (effort < 10){
 		var agonise = Math.floor(Math.random()*(10));
 		snarkResponse = ['yup', 'yep', 'mhm', 'mhmmm', 'cute', 'nice', 'yay', 'yaaay', 'ayup', 'yah'];
 		shitpost = snarkResponse[agonise];
 		spicybot.say(config.channels[0], shitpost);
-	} else if (effort < 10){
+	} else if (effort == 10){
+		getClickbait.amazon(function(link){spicybot.say(config.channels[0], link)});
+		shitpost = "amazon link";	
+	} else if (effort == 11){
 		getClickbait.britProb(function(link){spicybot.say(config.channels[0], link)});
 		shitpost = "reddit britprob link";	
 	} else {
@@ -54,8 +57,8 @@ spicybot.snark = function(){
 };
 
 spicybot.addListener('message', function(from, to, text, message) {
-	var inMsg = text;
-	fs.writeFile('curMsg.txt', inMsg, (err) => {
+		var inMsg = text;
+		fs.writeFile('curMsg.txt', inMsg, (err) => {
 		if (err) throw err;
 		var _this = this;
 		setTimeout( function(){_this.ifQuiet(inMsg);}, spicybot.masturbate());
