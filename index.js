@@ -28,7 +28,11 @@ spicybot.ifQuiet = function(initMsg){
 	
 		if (err) throw err;
 		if (curMsg === initMsg){
-			spicybot.snark();
+			if(Math.random > 0.7){
+				spicybot.snark();
+			}else{
+				console.log("Saw opening, didn't bother");
+			}
 		}else{
 			//sulk
 		}
@@ -61,7 +65,8 @@ spicybot.snark = function(){
 
 spicybot.addListener('message', function(from, to, text, message) {
 		curMsg = text;
+		inMsg = text;
 		var _this = this;
-		if(Math.random > 0.7){
-		setTimeout( function(){_this.ifQuiet(inMsg);}, spicybot.masturbate());}
+		setTimeout( function(){_this.ifQuiet(inMsg);}, spicybot.masturbate());
 });
+
