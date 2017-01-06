@@ -2,6 +2,8 @@ This is a joke. But we might be able to replace spicypixel with code anyway.
 
 Next features: 
 
+-respond to automation messages
+
 -so tvshow isnt bad eonder what theyll do for season
 
 -amazon affiliate links

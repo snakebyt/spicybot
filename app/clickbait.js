@@ -1,4 +1,4 @@
-// britprob.js - for scraping british problems for links
+// clickbait.js - for scraping the web for links
 
 const request = require('request');
 const cheerio = require('cheerio');

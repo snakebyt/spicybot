@@ -9,9 +9,13 @@ const config = {
 	botName : 'spicypibot'
 };
 
+var curMsg = "kjasdasndoapifjferiwejfnqwkmwe";
+
 var spicybot = new irc.Client(config.server, config.botName, {
 	channels : config.channels
 });
+
+
 
 spicybot.masturbate = function(){
 	grip = Math.floor(Math.random()*8)+5;
@@ -21,14 +25,13 @@ spicybot.masturbate = function(){
 };
 
 spicybot.ifQuiet = function(initMsg){
-	fs.readFile('curMsg.txt', 'utf8',(err, curMsg) => {
+	
 		if (err) throw err;
 		if (curMsg === initMsg){
 			spicybot.snark();
 		}else{
 			//sulk
 		}
-	});
 };
 
 spicybot.snark = function(){
@@ -57,11 +60,8 @@ spicybot.snark = function(){
 };
 
 spicybot.addListener('message', function(from, to, text, message) {
-		var inMsg = text;
-		fs.writeFile('curMsg.txt', inMsg, (err) => {
-		if (err) throw err;
+		curMsg = text;
 		var _this = this;
-		setTimeout( function(){_this.ifQuiet(inMsg);}, spicybot.masturbate());
-	});
-	return;
+		if(Math.random > 0.7){
+		setTimeout( function(){_this.ifQuiet(inMsg);}, spicybot.masturbate());}
 });
