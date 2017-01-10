@@ -26,13 +26,13 @@ spicybot.masturbate = function(){
 
 spicybot.ifQuiet = function(initMsg, currentMsg){
 		if (currentMsg === initMsg){
-			if(Math.random() > 0.5){
+			if(Math.random() > 0.3){
 				spicybot.snark();
 			}else{
 				console.log("Saw opening, didn't bother");
 			}
 		}else{
-			console.log("spicypibot sulked");	
+			//sulk
 		}
 };
 
