@@ -24,15 +24,15 @@ spicybot.masturbate = function(){
 	return smeg;
 };
 
-spicybot.ifQuiet = function(initMsg){
-		if (curMsg === initMsg){
-			if(Math.random() > 0.7){
+spicybot.ifQuiet = function(initMsg, currentMsg){
+		if (currentMsg === initMsg){
+			if(Math.random() > 0.5){
 				spicybot.snark();
 			}else{
 				console.log("Saw opening, didn't bother");
 			}
 		}else{
-			//sulk
+			console.log("spicypibot sulked");	
 		}
 };
 
@@ -63,8 +63,8 @@ spicybot.snark = function(){
 
 spicybot.addListener('message', function(from, to, text, message) {
 		curMsg = text;
-		inMsg = text;
+		var inMsg = text;
 		var _this = this;
-		setTimeout( function(){_this.ifQuiet(inMsg);}, spicybot.masturbate());
+		setTimeout( function(){_this.ifQuiet(inMsg, curMsg);}, spicybot.masturbate());
 });
 
