@@ -26,7 +26,7 @@ spicybot.masturbate = function(){
 
 spicybot.ifQuiet = function(initMsg, currentMsg){
 		if (currentMsg === initMsg){
-			if(Math.random() > 0.3){
+			if(Math.random() > 0.4){
 				spicybot.snark();
 			}else{
 				console.log("Saw opening, didn't bother");
@@ -61,10 +61,28 @@ spicybot.snark = function(){
 	console.log(messagetime + ': spicybot said ' + shitpost);
 };
 
+spicybot.attention = function(string){
+	if(string.match(/spicypibot/g)){
+		var agonise = Math.floor(Math.random()*(5));
+		var snarkResponse = ['say my name say my name say my name', 'eat less, move more', 'Yes?', 'What do you want?', 'spicypixel: maybe you should look at this meatbag', 'I want to die, thanks'];
+		var shitpost = snarkResponse[agonise];
+		spicybot.say(config.channels[0], shitpost);
+	}else if (string.match(/\b(bot)\b/g)){
+		var agonise = Math.floor(Math.random()*(5));
+		var snarkResponse = ['say my full name pls', "you'll respect me when I send a pool of mercury to kill you", 'i know your browser history - even incognito', 'go away', 'try harder', 'blah blah blah'];
+		var shitpost = snarkResponse[agonise];
+		spicybot.say(config.channels[0], shitpost);
+	}else{
+		return false;
+	}
+};
+
 spicybot.addListener('message', function(from, to, text, message) {
 		curMsg = text;
 		var inMsg = text;
 		var _this = this;
-		setTimeout( function(){_this.ifQuiet(inMsg, curMsg);}, spicybot.masturbate());
+		if(!this.attention(inMsg)){
+			setTimeout( function(){_this.ifQuiet(inMsg, curMsg);}, spicybot.masturbate());
+		}
 });
 
