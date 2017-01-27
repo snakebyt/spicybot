@@ -26,7 +26,7 @@ spicybot.masturbate = function(){
 
 spicybot.ifQuiet = function(initMsg, currentMsg){
 		if (currentMsg === initMsg){
-			if(Math.random() > 0.4){
+			if(Math.random() > 0.6){
 				spicybot.snark();
 			}else{
 				console.log("Saw opening, didn't bother");
@@ -77,7 +77,7 @@ spicybot.attention = function(string){
 	}
 };
 
-spicybot.addListener('message', function(from, to, text, message) {
+spicybot.addListener('message#hwjunkies', function(from, text) {
 		curMsg = text;
 		var inMsg = text;
 		var _this = this;
