@@ -6,7 +6,9 @@ const getClickbait = require('./app/clickbait');
 const config = {
 	channels: ['#hwjunkies'],
 	server : 'irc.quakenet.org', 
-	botName : 'spicypibot'
+	botName : 'spicypibot',
+	pass : 'RgzALbX!-k',
+	isAuthed : false
 };
 
 var curMsg = "kjasdasndoapifjferiwejfnqwkmwe";
@@ -77,7 +79,16 @@ spicybot.attention = function(string){
 	}
 };
 
+spicybot.auth = function(){
+	spicybot.say('Q@CServe.quakenet.org', 'AUTH spicypibot '+config.pass);
+	config.isAuthed = true;
+}
+
+
 spicybot.addListener('message#hwjunkies', function(from, text) {
+		if(!config.isAuthed){
+			spicybot.auth();
+		}
 		curMsg = text;
 		var inMsg = text;
 		var _this = this;
