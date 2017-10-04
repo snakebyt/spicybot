@@ -6,11 +6,13 @@ const getClickbait = require('./app/clickbait');
 const config = {
 	channels: ['#hwjunkies'],
 	server : 'irc.quakenet.org', 
-	botName : 'spicypibot',
-	pass : 'RgzALbX!-k',
+	botName : 'spicybot',
+	pass : fs.readFileSync('./password.txt', { encoding : 'utf8'}),
 	isAuthed : false
 };
-var talkingChance = 0.7;
+
+console.log(config.pass);
+var talkingChance = 0.3;
 
 var curMsg = "kjasdasndoapifjferiwejfnqwkmwe";
 
@@ -31,10 +33,10 @@ spicybot.ifQuiet = function(initMsg, currentMsg){
 		if (currentMsg === initMsg){
 			if(Math.random() > talkingChance){
 				spicybot.snark();
-				talkingChance = 0.7;
+				talkingChance = 0.3;
 			}else{
 				console.log("Saw opening, didn't bother");
-				talkingChance = talkingChance - 0.1;
+				talkingChance = talkingChance + 0.1;
 			}
 		}else{
 			//sulk
@@ -67,19 +69,23 @@ spicybot.snark = function(){
 };
 
 spicybot.attention = function(string){
-	if(string.match(/spicypibot/g)){
+	var shitpost = "";
+	if(string.match(/spicybot/g)){
 		var agonise = Math.floor(Math.random()*(5));
 		var snarkResponse = ['say my name say my name say my name', 'eat less, move more', 'Yes?', 'What do you want?', 'spicypixel: maybe you should look at this meatbag', 'I want to die, thanks'];
-		var shitpost = snarkResponse[agonise];
+		shitpost = snarkResponse[agonise];
 		spicybot.say(config.channels[0], shitpost);
 	}else if (string.match(/\b(bot)\b/g)){
 		var agonise = Math.floor(Math.random()*(5));
 		var snarkResponse = ['say my full name pls', "you'll respect me when I send a pool of mercury to kill you", 'i know your browser history - even incognito', 'go away', 'try harder', 'blah blah blah'];
-		var shitpost = snarkResponse[agonise];
+		shitpost = snarkResponse[agonise];
 		spicybot.say(config.channels[0], shitpost);
 	}else{
 		return false;
 	}
+	
+	var messagetime = new Date().toISOString();
+	console.log(messagetime + ': spicybot replied ' + shitpost);
 };
 
 spicybot.auth = function(){
@@ -88,7 +94,7 @@ spicybot.auth = function(){
 }
 
 
-spicybot.addListener('message#hwjunkies', function(from, text) {
+spicybot.addListener('message'+config.channels[0], function(from, text) {
 		if(!config.isAuthed){
 			spicybot.auth();
 		}
