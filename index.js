@@ -10,6 +10,7 @@ const config = {
 	pass : 'RgzALbX!-k',
 	isAuthed : false
 };
+var talkingChance = 0.7;
 
 var curMsg = "kjasdasndoapifjferiwejfnqwkmwe";
 
@@ -28,10 +29,12 @@ spicybot.masturbate = function(){
 
 spicybot.ifQuiet = function(initMsg, currentMsg){
 		if (currentMsg === initMsg){
-			if(Math.random() > 0.6){
+			if(Math.random() > talkingChance){
 				spicybot.snark();
+				talkingChance = 0.7;
 			}else{
 				console.log("Saw opening, didn't bother");
+				talkingChance = talkingChance - 0.1;
 			}
 		}else{
 			//sulk
