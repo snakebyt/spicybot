@@ -11,7 +11,6 @@ const config = {
 	isAuthed : false
 };
 
-console.log(config.pass);
 var talkingChance = 0.3;
 
 var curMsg = "kjasdasndoapifjferiwejfnqwkmwe";
@@ -22,16 +21,18 @@ var spicybot = new irc.Client(config.server, config.botName, {
 
 
 
-spicybot.masturbate = function(){
+spicybot.masturbate = function()
+{
 	grip = Math.floor(Math.random()*8)+5;
 	lube = grip*1000;
 	smeg = lube*60;
 	return smeg;
 };
 
-spicybot.ifQuiet = function(initMsg, currentMsg){
-		if (currentMsg === initMsg){
-			if(Math.random() > talkingChance){
+spicybot.ifQuiet = function(initMsg, currentMsg)
+{
+		if (currentMsg === initMsg) {
+		if (Math.random() <  talkingChance) {
 				spicybot.snark();
 				talkingChance = 0.3;
 			}else{
@@ -43,8 +44,8 @@ spicybot.ifQuiet = function(initMsg, currentMsg){
 		}
 };
 
-spicybot.snark = function(){
-
+spicybot.snark = function()
+{
 	var shitpost;
 	var effort = Math.floor(Math.random()*(12));
 
@@ -68,7 +69,8 @@ spicybot.snark = function(){
 	console.log(messagetime + ': spicybot said ' + shitpost);
 };
 
-spicybot.attention = function(string){
+spicybot.attention = function(string)
+{
 	var shitpost = "";
 	if(string.match(/spicybot/g)){
 		var agonise = Math.floor(Math.random()*(5));
@@ -88,13 +90,15 @@ spicybot.attention = function(string){
 	console.log(messagetime + ': spicybot replied ' + shitpost);
 };
 
-spicybot.auth = function(){
+spicybot.auth = function()
+{
 	spicybot.say('Q@CServe.quakenet.org', 'AUTH spicypibot '+config.pass);
 	config.isAuthed = true;
 }
 
 
-spicybot.addListener('message'+config.channels[0], function(from, text) {
+spicybot.addListener('message'+config.channels[0], function(from, text)
+{
 		if(!config.isAuthed){
 			spicybot.auth();
 		}
