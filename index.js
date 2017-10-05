@@ -36,8 +36,8 @@ spicybot.ifQuiet = function(initMsg, currentMsg)
 				spicybot.snark();
 				talkingChance = 0.3;
 			}else{
-				console.log("Saw opening, didn't bother");
 				talkingChance = talkingChance + 0.1;
+				console.log("Saw opening, didn't bother, probability now "+talkingChance);
 			}
 		}else{
 			//sulk
