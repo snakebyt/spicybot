@@ -20,6 +20,14 @@ var spicybot = new irc.Client(config.server, config.botName, {
 });
 
 
+spicybot.isNewsLink = function(string) {
+    if (string.indexOf('bbc.co.uk/news/') >= 0) {
+        return true;
+    }
+
+    return false;
+}
+
 
 spicybot.masturbate = function()
 {
@@ -56,10 +64,10 @@ spicybot.snark = function()
 		spicybot.say(config.channels[0], shitpost);
 	} else if (effort == 10){
 		getClickbait.amazon(function(link){spicybot.say(config.channels[0], link)});
-		shitpost = "amazon link";	
+		shitpost = "amazon link";
 	} else if (effort == 11){
 		getClickbait.britProb(function(link){spicybot.say(config.channels[0], link)});
-		shitpost = "reddit britprob link";	
+		shitpost = "reddit britprob link";
 	} else {
 		getClickbait.waitrose(function(link){spicybot.say(config.channels[0], link)});
 		shitpost = "waitrose link (because sainsburys website no likey being scraped)";
@@ -82,10 +90,13 @@ spicybot.attention = function(string)
 		var snarkResponse = ['say my full name pls', "you'll respect me when I send a pool of mercury to kill you", 'i know your browser history - even incognito', 'go away', 'try harder', 'blah blah blah'];
 		shitpost = snarkResponse[agonise];
 		spicybot.say(config.channels[0], shitpost);
+        } else if (spicybot.isNewsLink(string) && Math.floor(Math.random()*(5)) == 0) {
+                shitpost = 'what a time to be alive';
+                spicybot.say(config.channels[0], shitpost);
 	}else{
 		return false;
 	}
-	
+
 	var messagetime = new Date().toISOString();
 	console.log(messagetime + ': spicybot replied ' + shitpost);
 };
