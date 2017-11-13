@@ -1,16 +1,11 @@
 //Spicybot, your friendly spicypixel replacement
 
+
 var irc = require('irc');
 const fs = require('fs');
 const getClickbait = require('./app/clickbait');
-const config = {
-	channels: ['#hwjunkies'],
-	server : 'irc.quakenet.org', 
-	botName : 'spicybot',
-	pass : fs.readFileSync('./password.txt', { encoding : 'utf8'}),
-	isAuthed : false
-};
-
+const config = JSON.parse(fs.readFileSync('./config.json', { encoding : 'utf8'}));
+console.log(config);
 var talkingChance = 0.3;
 
 var curMsg = "kjasdasndoapifjferiwejfnqwkmwe";
@@ -21,11 +16,14 @@ var spicybot = new irc.Client(config.server, config.botName, {
 
 
 spicybot.isNewsLink = function(string) {
-    if (string.indexOf('bbc.co.uk/news/') >= 0) {
-        return true;
-    }
+	var sites = ['bbc.co.uk/news/', 'news.sky.com', 'theguardian.com', 'independent.co.uk', 'dailymail.co.uk'];
+	sites.forEach(function(site){
+    		if (string.indexOf(site) >= 0) {
+        		return true;
+    		}
+	});
 
-    return false;
+    	return false;
 }
 
 

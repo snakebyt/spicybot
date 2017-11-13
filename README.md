@@ -1,5 +1,10 @@
 This is a joke. But we might be able to replace spicypixel with code anyway.
 
+Config files:
+
+config.json = a json file containing an array with the config for the bot. requires channels, server, botName, pass, isAuthed: false
+
+
 Next features: 
 
 -respond to automation messages
