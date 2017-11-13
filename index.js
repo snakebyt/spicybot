@@ -5,7 +5,7 @@ var irc = require('irc');
 const fs = require('fs');
 const getClickbait = require('./app/clickbait');
 const config = JSON.parse(fs.readFileSync('./config.json', { encoding : 'utf8'}));
-console.log(config);
+
 var talkingChance = 0.3;
 
 var curMsg = "kjasdasndoapifjferiwejfnqwkmwe";
