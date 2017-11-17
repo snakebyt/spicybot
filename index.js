@@ -17,11 +17,11 @@ var spicybot = new irc.Client(config.server, config.botName, {
 
 spicybot.isNewsLink = function(string) {
 	var sites = ['bbc.co.uk/news/', 'news.sky.com', 'theguardian.com', 'independent.co.uk', 'dailymail.co.uk'];
-	sites.forEach(function(site){
-    		if (string.indexOf(site) >= 0) {
+	for (i = 0; i < sites.length; i++) {
+    		if (string.indexOf(sites[i]) >= 0) {
         		return true;
     		}
-	});
+	}
 
     	return false;
 }
