@@ -25,7 +25,8 @@
   "homepage": "https://github.com/snakebyt/spicybot#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
-    "request": "^2.79.0",
-    "irc" : "^0.5.2"
+    "irc": "^0.5.2",
+    "log": "^1.4.0",
+    "request": "^2.79.0"
   }
 }
