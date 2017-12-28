@@ -18,7 +18,7 @@ log.info('Starting bot');
 // Establish an IRC connection
 var spicybot = new irc.Client(config.server, config.botName, {
     channels : config.channels,
-    debug: true
+    debug: config.debug 
 });
 
 // Send all errors to logging library

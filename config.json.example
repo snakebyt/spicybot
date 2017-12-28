@@ -1,5 +1,8 @@
 {
     "channel": "#hwjunkied",
     "server": "irc.quakenet.org",
-    "botName": "spicybot"
+    "botName": "spicybot",
+    "pass" : "enterpasswordhere",
+    "isAuthed" : false,
+    "debug" : true
 }
